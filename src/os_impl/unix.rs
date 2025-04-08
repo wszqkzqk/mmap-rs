@@ -1,8 +1,8 @@
 use crate::error::Error;
 use crate::{MmapFlags, PageSize, UnsafeMmapFlags};
 use bitflags::bitflags;
-use nix::sys::mman::*;
-use nix::unistd::*;
+use nix::mmap::{mmap, mprotect, msync, munlock, mlock, munmap, ProtFlags, MapFlags, MsFlags, MmapAdvise};
+use nix::unistd::{sysconf, SysconfVar};
 use std::fs::File;
 use std::num::NonZeroUsize;
 use std::ops::Range;
